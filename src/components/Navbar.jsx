@@ -8,15 +8,15 @@ const [mobileMenuIsOpen, setmobileMenuIsOpen] = useState(false)
 
 const links = [
     {
-        title: "Features",
+        title: "Home",
         href: "#features"
     },
     {
-        title: "Pricing",
+        title: "Find Parking",
         href: "#pricing"
     },
     {
-        title: "Testimonials",
+        title: "My Bookings",
         href: "#testimonials"
     },
 ]
@@ -30,8 +30,8 @@ const links = [
                 <img src={logo} alt="logo" className="w-6 h-6 sm:w-8 sm:h-8 "/>
                 </div>
                 <span className="text-lg sm:text-xl md:text-2xl font-medium">
-                    <span className="text-white">Code</span>
-                    <span className="text-blue-400">Flow</span>
+                    <span className="text-white">Park</span>
+                    <span className="text-blue-400">Ease</span>
                 </span>
                </div> 
 
