@@ -17,25 +17,25 @@ const Hero = () => {
                 <div>
                     <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4 sm:mb-6 animate-in slide-in-from-bottom duration-700">
                         <Sparkles className="w-4 h-4 text-blue-400"/>
-                        <span className="text-xs sm:text-sm text-blue-300">Introducing ParkEase</span>
+                        <span className="text-xs sm:text-sm text-blue-300">Introducing RentEase</span>
                     </div>
                   <h1 className="text-5xl sm:text-3xl md:text-4xl lg:text-5xl 
                   xl:text-6xl font-semibold mb-4 sm:mb-6 animate-in slide-in-from-bottom duration-700 delay-100 leading-tight">
-                    <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent block mb-1 sm:mb-2 ">Find Parking Faster</span>
-                    <span className="bg-gradient-to-b from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block mb-1 sm:mb-2 ">Park Smarter</span>
-                    <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent block mb-1 sm:mb-2 ">With ParkEase</span>
+                    <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent block mb-1 sm:mb-2 ">Rent Smarter</span>
+                    <span className="bg-gradient-to-b from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block mb-1 sm:mb-2 ">Drive Easier</span>
+                    <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent block mb-1 sm:mb-2 ">With RentEase</span>
                   </h1>
-                 <p className="text-md sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-6 sm:mb-8 animate-in slide-in-from-bottom duration-700 delay-200 leading-relaxed">Save time and avoid the hassle of searching for parking .Locate nearby spots, check real-time availability, and reserve instantly — all in one app.
+                 <p className="text-md sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-6 sm:mb-8 animate-in slide-in-from-bottom duration-700 delay-200 leading-relaxed">Save time and skip the hassle of finding a ride. Browse nearby cars, check availability, and book instantly — all in one app
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8 sm:mb-12 animate-in slide-in-from-bottom duration-700 delay-300">
-                    <button className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-b from-blue-600 to-blue-400 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-102 flex items-center justify-center space-x-2">
-                        <span>Find Parking</span>
-                        <ArrowRight className="w-4 h-4 sm:h-5 group-hover:translate-x-1 transition-transform duration-300"/>
+                    <button className="group w-full sm:w-auto px-8 sm:px-8 py-4 sm:py-5 bg-gradient-to-b from-blue-600 to-blue-400 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-102 flex items-center justify-center space-x-2">
+                        <span>Find Cars</span>
+                        <ArrowRight className="w-4 h-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300"/>
                     </button>
 
             
-                <button className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop:blur-sm border border-white/10 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-white/10 flex items-center justify-center space-x-2">
+                <button className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-white/10 flex items-center justify-center space-x-2">
                         <div className="p-2 bg-white/10 rounded-full group-hover:bg-white/20 duration-300 transition-colors">
                         <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white"/>
                         </div>
@@ -57,7 +57,7 @@ const Hero = () => {
                             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"/>
                            </div>
                            <div>
-                           <span className="text-xs font-semibold sm:text-sm text-gray-300">Park</span>
+                           <span className="text-xs font-semibold sm:text-sm text-gray-300">Rent</span>
                            <span className="text-xs font-semibold sm:text-sm text-blue-400">Ease</span>
                            </div>
                            

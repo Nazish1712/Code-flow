@@ -12,7 +12,7 @@ const links = [
         href: "#features"
     },
     {
-        title: "Find Parking",
+        title: "Explore Cars",
         href: "#pricing"
     },
     {
@@ -30,7 +30,7 @@ const links = [
                 <img src={logo} alt="logo" className="w-6 h-6 sm:w-8 sm:h-8 "/>
                 </div>
                 <span className="text-lg sm:text-xl md:text-2xl font-medium">
-                    <span className="text-white">Park</span>
+                    <span className="text-white">Rent</span>
                     <span className="text-blue-400">Ease</span>
                 </span>
                </div> 

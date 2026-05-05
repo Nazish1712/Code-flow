@@ -1,4 +1,6 @@
-const FindParking = () => {
+import CarsCard from "./CarCard"
+
+const BrowseCarsPage = () => {
     return (
         <div className="pt-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto ">
     <h2 className="text-left text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 sm:mb-3 lg:mb-4 bg-gradient-to-l from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">Find your perfect spot</h2>
@@ -18,8 +20,10 @@ const FindParking = () => {
         </div>
     </div>
     <div>
-        <ParkingCard/>
+        <CarCard/>
     </div> 
    </div>
     )
 }
+
+export default BrowseCarsPage
