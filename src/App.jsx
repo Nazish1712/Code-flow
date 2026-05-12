@@ -2,7 +2,8 @@ import './App.css'
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import ExploreHomesPage from "./components/ExploreHomesPage"
-import {createBrowserRouter} from "react-router-dom"
+import Error from "./components/Error"
+import {createBrowserRouter , Outlet} from "react-router-dom"
 
 
 const AppLayout = () =>{
@@ -12,7 +13,7 @@ const AppLayout = () =>{
     
         <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
           <Navbar/>
-          <Hero/>
+          <Outlet/>
         </div>
         )
 }
@@ -20,12 +21,20 @@ const AppLayout = () =>{
 const appRouter = createBrowserRouter([
   {
     path : "/",
-    element : <AppLayout/>
-  },
-  {
-    path : "/explore-homes",
-    element : <ExploreHomesPage/>
+    element : <AppLayout/>,
+    children : [
+      {
+        path : "/",
+        element : <Hero/>
+      },
+      {
+        path : "/explore-homes",
+        element : <ExploreHomesPage/>
+      }
+    ],
+    errorElement : <Error/>
   }
+  
 ])
 
 export default appRouter

@@ -1,6 +1,7 @@
 import logo from "../images/logo.png"
 import { Menu  , X} from "lucide-react"
 import {useState} from "react"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
 
@@ -9,15 +10,15 @@ const [mobileMenuIsOpen, setmobileMenuIsOpen] = useState(false)
 const links = [
     {
         title: "Home",
-        href: "#features"
+        to: "/"
     },
     {
         title: "Explore Homes",
-        href: "#pricing"
+        to: "/explore-homes"
     },
     {
         title: "My Bookings",
-        href: "#testimonials"
+        to: "/my-bookings"
     },
 ]
 
@@ -26,19 +27,20 @@ const links = [
            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
                <div className="flex items-center space-x-1 group cursor-pointer">
-               <div>
+
+                <div>
                 <img src={logo} alt="logo" className="w-6 h-6 sm:w-8 sm:h-8 "/>
                 </div>
                 <span className="text-lg sm:text-xl md:text-2xl font-medium">
                     <span className="text-white">Urban</span>
                     <span className="text-blue-400">Stay</span>
                 </span>
-               </div> 
-
+                </div> 
+                
                {/** Nav Links */}
                <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
                  {links.map((link, index) => (
-                    <a href={link.href} key={index} className="text-gray-300 hover:text-white text-sm lg:text-base">{link.title}</a>
+                    <Link to={link.to} key={index} className="text-gray-300 hover:text-white text-sm lg:text-base">{link.title}</Link>
                  ))}
                </div>
 
@@ -53,7 +55,7 @@ const links = [
            <div className="md:hidden bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 animate-in slide-in-from-top duration-300">
             <div className="px-4 py-4 sm:py-6 space-y-3 sm:space-y-4">
             {links.map((link, index) => (
-                    <a href={link.href} key={index} className="block text-gray-300 hover:text-white text-sm lg:text-base" onClick={() => setmobileMenuIsOpen(false)}>{link.title}</a>
+                    <Link to={link.to} key={index} className="block text-gray-300 hover:text-white text-sm lg:text-base" onClick={() => setmobileMenuIsOpen(false)}>{link.title}</Link>
                  ))} 
             </div>
             </div>}
