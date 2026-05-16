@@ -2,6 +2,7 @@ import './App.css'
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import ExploreHomesPage from "./components/ExploreHomesPage"
+import IndividualHomePage from "./components/IndividualHomePage"
 import Error from "./components/Error"
 import {createBrowserRouter , Outlet} from "react-router-dom"
 
@@ -30,6 +31,10 @@ const appRouter = createBrowserRouter([
       {
         path : "/explore-homes",
         element : <ExploreHomesPage/>
+      },
+      {
+        path:"/individual-home/:homeId",
+        element: <IndividualHomePage/>
       }
     ],
     errorElement : <Error/>
