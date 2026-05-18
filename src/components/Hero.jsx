@@ -3,6 +3,8 @@ import {useState} from "react"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { heroSectionImages, floatingCards} from "../data/HeroSectionData"
+import {Link} from "react-router-dom"
+
 const Hero = () => {
     const [activeTab, setActiveTab] = useState("Find")
     
@@ -27,13 +29,13 @@ const Hero = () => {
                   </h1>
                  <p className="text-md sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-6 sm:mb-8 animate-in slide-in-from-bottom duration-700 delay-200 leading-relaxed">Save time and skip the stress of house hunting. Browse nearby homes, check availability, and book instantly — all in one place.
                 </p>
-
+               
+               
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8 sm:mb-12 animate-in slide-in-from-bottom duration-700 delay-300">
-                    <button className="group w-full sm:w-auto px-8 sm:px-8 py-4 sm:py-5 bg-gradient-to-b from-blue-600 to-blue-400 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-102 flex items-center justify-center space-x-2">
+                <Link to="/explore-homes" className="group w-full sm:w-auto px-8 sm:px-8 py-4 sm:py-5 bg-gradient-to-b from-blue-600 to-blue-400 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-102 flex items-center justify-center space-x-2">
                         <span>Find Homes</span>
                         <ArrowRight className="w-4 h-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300"/>
-                    </button>
-
+                </Link> 
             
                 <button className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-white/10 flex items-center justify-center space-x-2">
                         <div className="p-2 bg-white/10 rounded-full group-hover:bg-white/20 duration-300 transition-colors">

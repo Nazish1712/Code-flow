@@ -2,6 +2,8 @@ import HomeCard from "./HomeCard.jsx"
 import {Star, DollarSign , ArrowRight , House} from "lucide-react"
 import {useState , useEffect} from "react"
 import Shimmer from "./Shimmer.jsx"
+import {HOME_LISTING_API} from "../utils/constants.js"
+import {Link} from "react-router-dom"
 
 
 const ExploreHomesPage =() => {
@@ -16,7 +18,7 @@ const ExploreHomesPage =() => {
      },[])
 
      const fetchData = async () => {
-        const response = await fetch("https://raw.githubusercontent.com/Nazish1712/UrbanStay-house-listings-api/main/urbanHouseListing.json")
+        const response = await fetch(HOME_LISTING_API)
         
         const data = await response.json()
 
@@ -76,7 +78,7 @@ const ExploreHomesPage =() => {
     :
     (<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
         {filteredHomes.map((card)=> (
-        <HomeCard key={card.info.id} cardData={card.info}/>))}
+        <Link key={card.info.id} to={"/individual-home/"+card.info.id}><HomeCard key={card.info.id} cardData={card.info}/></Link>))}
     </div> )
     }
  </div>
