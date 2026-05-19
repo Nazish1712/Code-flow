@@ -1,33 +1,18 @@
-import { useEffect, useState} from "react"
+import { useState} from "react"
 import {MapPin, Star, Users, BedDouble, Bath, Waves, ArrowRight} from "lucide-react"
 import HomeInfoShimmer from "./HomeInfoShimmer"
 import {useParams} from "react-router-dom"
-import {INDIVIDUAL_HOME_API} from "../utils/constants.js"
+import useHomeInfo from "../utils/useHomeInfo"
+
 
 const IndividualHomePage = () => {
-     const [homeInfo , setHomeInfo] = useState(null)
+
 
      const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
      const {homeId} = useParams()
      
-
-    useEffect(()=>{
-        fetchHomes()
-    },[])
-
-    const fetchHomes = async () => {
-        const response = await fetch(INDIVIDUAL_HOME_API)
-        const data = await response.json()
-        
-        const allHomes = data?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.homes
-
-        if(allHomes){
-            const specificHome = allHomes.find((home) => String(home.info.id) === String(homeId))
-
-            setHomeInfo(specificHome)
-        }
-    }
+     const homeInfo = useHomeInfo(homeId)
     
     if(homeInfo === null) return <HomeInfoShimmer/>;
 
@@ -36,7 +21,7 @@ const IndividualHomePage = () => {
 
     return(
     <div className="pt-18 sm:pt-20 px-5 sm:px-6 lg:px-10 max-w-3xl mx-auto flex flex-col gap-4 min-h-screen">
-        <div className="overflow-hidden rounded-3xl border border-white/90">
+        <div className="overflow-hidden rounded-3xl border border-blue-300">
             <img src={images[currentImageIndex]} alt="home-image" className="w-full h-[250px] md:h-[350px] transition-all duration-500"></img>
         </div> 
         <div className="flex justify-center items-center gap-2">

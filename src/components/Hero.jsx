@@ -10,12 +10,12 @@ const Hero = () => {
     
     const currentFloatingCard = floatingCards[activeTab]
     return (
-        <section className="relative  lg:min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <section className="relative  min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div className="absolute top-20 left-4 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-20 right-4 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
             <div className="max-w-7xl mx-auto text-center relative w-full">
-                <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-2 text-center lg:text-left gap-0.5  lg:gap-12 items-center relative">
+                <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-2 text-center lg:text-left gap-0.5 lg:gap-12 items-center relative">
                 <div>
                     <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4 sm:mb-6 animate-in slide-in-from-bottom duration-700">
                         <Sparkles className="w-4 h-4 text-blue-400"/>
@@ -31,7 +31,7 @@ const Hero = () => {
                 </p>
                
                
-                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8 sm:mb-12 animate-in slide-in-from-bottom duration-700 delay-300">
+                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-5 sm:mb-8 animate-in slide-in-from-bottom duration-700 delay-300">
                 <Link to="/explore-homes" className="group w-full sm:w-auto px-8 sm:px-8 py-4 sm:py-5 bg-gradient-to-b from-blue-600 to-blue-400 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-102 flex items-center justify-center space-x-2">
                         <span>Find Homes</span>
                         <ArrowRight className="w-4 h-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300"/>
@@ -49,7 +49,7 @@ const Hero = () => {
 
             <div className="relative order-2 w-full ">
                 <div className="relative bg-white/5 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/10">
-                    <div className="bg-gradient-to-br from-gray-900/20 to-gray-800/20 backdrop-blur-sm rounded-lg overflow-hidden h-[320px] sm:h-[500px] lg:h-[450px] border border-white/5">
+                    <div className="bg-gradient-to-br from-gray-900/20 to-gray-800/20 backdrop-blur-sm rounded-lg overflow-hidden h-[290px] sm:h-[450px] md:h[500px] lg:h-[450px] border border-white/5">
                         {/**IDE header */}
                         <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 bg-white/5 backdrop-blur-sm border-b border-white/10">
                         <div className="flex space-x-2 items-center">
@@ -109,5 +109,3 @@ const Hero = () => {
 }
 
 export default Hero
-
-{/*1:12*/}

@@ -1,8 +1,10 @@
 import { BadgeCent } from "lucide-react"
+import image from "../images/image1.png"
+import image1 from "../images/image2.png"
 
 export const heroSectionImages = {
-  "Find": "https://images.unsplash.com/photo-1528255671579-01b9e182ed1d?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "Reserve": "https://images.unsplash.com/photo-1685138926066-ad3c7642a5e5?q=80&w=1228&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "Find": image,
+  "Reserve": image1,
   "Book": "https://images.unsplash.com/photo-1719941032563-75921fe474fc?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 }
 
