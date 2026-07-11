@@ -12,6 +12,8 @@ const ExploreHomesPage =() => {
     const [filteredHomes, setFilteredHomes] = useState([])
 
     const [searchText , setSearchText] = useState("")
+
+    const [activeFilter , setActiveFilter] = useState("allHomes")
     
      useEffect(()=>{
         fetchData()
@@ -50,21 +52,44 @@ const ExploreHomesPage =() => {
             </button>
         </div>
         <div className="flex items-center flex-wrap gap-3 mb-4">
-            <button className="px-3 sm:px-4 py-1  bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg font-semibold text-sm sm:text-base hover:bg-white/10 hover:scale-102 hover:border-white/30 flex justify-center items-center gap-2 transition-all duration-300 ease-in-out" onClick={()=> {const highRatingList = listOfHomes.filter((home) => home.info.rating > 4.5)
-                setFilteredHomes(highRatingList)
-            }}>
+        <button
+        className={`px-3 sm:px-4 py-1 rounded-lg font-semibold text-sm sm:text-base
+                    flex justify-center items-center gap-2
+                     transition-all duration-300 ease-in-out
+                    ${activeFilter === "highRating"
+      ? "bg-gradient-to-b from-blue-600 to-blue-400 border border-blue-300 shadow-lg scale-105 hover:shadow-xl"
+      : "bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/30 hover:scale-105"
+  }`} onClick={()=> {const highRatingList = listOfHomes.filter((home) => home.info.rating > 4.5)
+    setFilteredHomes(highRatingList)
+    setActiveFilter("highRating")
+}}
+>
             <Star className="w-4 h-4 sm:h-5 sm:w-5 text-yellow-500"/>
             <span>High Ratings</span>
             </button>
-            <button className="px-3 sm:px-4 py-1  bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg font-semibold text-sm sm:text-base hover:bg-white/10 hover:scale-102 hover:border-white/30  flex justify-center items-center gap-2 transition-all duration-300 ease-in-out" onClick={()=>{
+            <button className={`px-3 sm:px-4 py-1 rounded-lg font-semibold text-sm sm:text-base
+                    flex justify-center items-center gap-2
+                     transition-all duration-300 ease-in-out
+                    ${activeFilter === "lowestPrice"
+      ? "bg-gradient-to-b from-blue-600 to-blue-400 border border-blue-300 shadow-lg scale-105 hover:shadow-xl"
+      : "bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/30 hover:scale-105"
+  }`} onClick={()=>{
                 const lowPriceList = listOfHomes.filter((home)=> home.info.pricePerDay < 1500)
-                 setFilteredHomes(lowPriceList)}}>
+                 setFilteredHomes(lowPriceList)
+                 setActiveFilter("lowestPrice")}}>
             <DollarSign className="w-4 h-4 sm:h-5 sm:w-5 text-green-500"/>
             <span>Lowest price</span>
             </button>
-            <button className="px-3 sm:px-4 py-1  bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg font-semibold text-sm sm:text-base hover:bg-white/10 hover:scale-102 hover:border-white/30  flex justify-center items-center gap-2 transition-all duration-300 ease-in-out" onClick={()=>{
+            <button className={`px-3 sm:px-4 py-1 rounded-lg font-semibold text-sm sm:text-base
+                    flex justify-center items-center gap-2
+                     transition-all duration-300 ease-in-out
+                    ${activeFilter === "allHomes"
+      ? "bg-gradient-to-b from-blue-600 to-blue-400 border border-blue-300 shadow-lg scale-105 hover:shadow-xl"
+      : "bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/30 hover:scale-105"
+  }`} onClick={()=>{
                 setFilteredHomes(listOfHomes)
-                setSearchText("")}}>
+                setSearchText("")
+                setActiveFilter("allHomes")}}>
             <House className="w-4 h-4 sm:h-5 sm:w-5 text-blue-500"/>
             <span>All Homes</span>
             </button>
