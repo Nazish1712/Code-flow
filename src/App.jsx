@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import ExploreHomesPage from "./components/ExploreHomesPage"
 import IndividualHomePage from "./components/IndividualHomePage"
+import MyBookingsPage from './components/MyBookingsPage'
 import Error from "./components/Error"
 import {createBrowserRouter , Outlet} from "react-router-dom"
 import {Provider} from "react-redux"
@@ -37,6 +38,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/individual-home/:homeId",
         element: <IndividualHomePage/>
+      },
+      {
+        path : "/my-bookings",
+        element : <MyBookingsPage/>
       }
     ],
     errorElement : <Error/>

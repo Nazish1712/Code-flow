@@ -3,6 +3,8 @@ import {MapPin, Star, Users, BedDouble, Bath, Waves, ArrowRight} from "lucide-re
 import HomeInfoShimmer from "./HomeInfoShimmer"
 import {useParams} from "react-router-dom"
 import useHomeInfo from "../utils/useHomeInfo"
+import { useDispatch } from "react-redux"
+import { addItem } from "../utils/cartSlice" 
 
 
 const IndividualHomePage = () => {
@@ -18,6 +20,21 @@ const IndividualHomePage = () => {
 
     const {name, locality, areaName, description, pricePerDay, rating, reviews, guests, bedrooms, bathrooms, pool, images} = homeInfo?.info
 
+    const dispatch = useDispatch()
+
+    const handleAddBookingItem = () => {
+        //dispatch an action
+        const bookingDetails = {
+            id: homeId,
+            name:name,
+            pricePerDay:pricePerDay,
+            location: `${locality}, ${areaName}`,
+            image: images[0],
+        }
+        dispatch(addItem(bookingDetails))
+        console.log(bookingDetails)
+    }
+   
 
     return(
     <div className="pt-18 sm:pt-20 px-5 sm:px-6 lg:px-10 max-w-3xl mx-auto flex flex-col gap-4 min-h-screen">
@@ -85,7 +102,7 @@ const IndividualHomePage = () => {
             <div className="font-semibold text-base sm:text-lg">
                 {pricePerDay}/day
             </div>
-            <button className="flex justify-center items-center group px-4 sm:px-5 py-2 bg-gradient-to-b from-blue-600 to-blue-400 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 gap-2">
+            <button className="flex justify-center items-center group px-4 sm:px-5 py-2 bg-gradient-to-b from-blue-600 to-blue-400 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 gap-2" onClick={handleAddBookingItem}>
             <span>Book</span>
             <ArrowRight className="w-4 h-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300"/>
           </button>
