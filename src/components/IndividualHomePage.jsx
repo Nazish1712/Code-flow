@@ -28,8 +28,10 @@ const IndividualHomePage = () => {
             id: homeId,
             name:name,
             pricePerDay:pricePerDay,
-            location: `${locality}, ${areaName}`,
+            locality: locality,
+            areaName: areaName,
             image: images[0],
+            rating: rating,
         }
         dispatch(addItem(bookingDetails))
         console.log(bookingDetails)

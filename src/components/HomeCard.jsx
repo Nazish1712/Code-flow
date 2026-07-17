@@ -1,8 +1,7 @@
-import {MapPin , ArrowRight , Star} from "lucide-react"
+import {MapPin , ArrowRight , Star , Check} from "lucide-react"
 
 
-const HomeCard = (props) => {
-  const {cardData} = props;
+const HomeCard = ({cardData, isBooked}) => {
   const {name, image, locality, rating, pricePerDay, areaName} = cardData
     return(
        <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 hover:shadow-lg hover:ring-white/20 hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300 ease-in-out hover:ring-1">
@@ -23,9 +22,10 @@ const HomeCard = (props) => {
           <span className="text-sm sm:text-base text-white/60 ">{locality}, {areaName}</span>
           </div>
           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-          <button className="flex justify-center items-center group px-3 sm:px-4 py-1 bg-gradient-to-b from-blue-600 to-blue-400 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 gap-2">
-            <span>Book</span>
-            <ArrowRight className="w-4 h-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300"/>
+          <button className="flex justify-center items-center group px-3 sm:px-4 py-1 rounded-lg  bg-gradient-to-b from-blue-600 to-blue-400 font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 gap-2">
+            <span>{isBooked ? "Booked" : "Book"}</span>
+            {isBooked ? (<Check className="w-4 h-4 sm:h-5 sm:w-5  group-hover:translate-x-0.5 transition-transform duration-300"/>) : (<ArrowRight className="w-4 h-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300"/>)}
+            
           </button>
         </div>
        </div>
