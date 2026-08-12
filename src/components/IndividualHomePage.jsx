@@ -16,6 +16,8 @@ const IndividualHomePage = () => {
      
      const homeInfo = useHomeInfo(homeId)
 
+     const dispatch = useDispatch()
+
      const bookedItems = useSelector((state) => state.cart.items)
 
      const isAlreadyBooked = bookedItems.some((item) => item.id === homeId)
@@ -24,7 +26,7 @@ const IndividualHomePage = () => {
 
     const {name, locality, areaName, description, pricePerDay, rating, reviews, guests, bedrooms, bathrooms, pool, images} = homeInfo?.info
 
-    const dispatch = useDispatch()
+    
 
     const handleAddBookingItem = () => {
         //dispatch an action
@@ -112,7 +114,7 @@ const IndividualHomePage = () => {
             <button 
             onClick={handleAddBookingItem}
             disabled={isAlreadyBooked}
-            className={`flex justify-center items-center group px-4 sm:px-5 py-2 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 gap-2 cursor-pointer
+            className={`flex justify-center items-center group px-4 sm:px-5 py-2 rounded-lg font-semibold text-base sm:text-lg transition-all duration-500 gap-2 cursor-pointer
                 ${isAlreadyBooked 
                     ? "bg-green-500/20 text-green-400 border border-green-500/50 cursor-not-allowed" 
                     : "bg-gradient-to-b from-blue-600 to-blue-400 hover:scale-105" 
