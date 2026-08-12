@@ -32,7 +32,7 @@ const MyBookingsPage = () => {
         </div>
     ):(<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {bookingItems.map((item)=>(
-          <HomeCard cardData={item} key={item.id} isBooked={true} onDelete={() => dispatch(removeItem(item.id))}/>
+          <HomeCard cardData={item} key={item.id} isBooked={true} className="bg-green-500/20 text-green-400 border border-green-500/50" onDelete={() => dispatch(removeItem(item.id))}/>
       ))}</div>)}
      </div>
   )

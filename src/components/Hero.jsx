@@ -1,7 +1,5 @@
 import {ChevronDown , Sparkles , ArrowRight, Play} from "lucide-react"
 import {useState} from "react"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { heroSectionImages, floatingCards} from "../data/HeroSectionData"
 import {Link} from "react-router-dom"
 
@@ -47,7 +45,7 @@ const Hero = () => {
                 </div>
 
 
-            <div className="relative order-2 w-full md:w-[80%] lg:w-full">
+             <div className="relative order-2 w-full md:w-[80%] lg:w-full">
                 <div className="relative bg-white/5 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/10">
                     <div className="bg-gradient-to-br from-gray-900/20 to-gray-800/20 backdrop-blur-sm rounded-lg overflow-hidden h-[290px] sm:h-[450px] border border-white/5">
                      
@@ -96,8 +94,10 @@ const Hero = () => {
                             {currentFloatingCard.content}
                         </div>
                     </div>
-                </div>
-            </div>
+               </div>  
+               </div>
+               
+            
             </div>
             </div>
         </section>
