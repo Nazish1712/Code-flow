@@ -1,11 +1,12 @@
 import { BadgeCent } from "lucide-react"
-import image from "../images/image1.png"
+import image from "../images/image1.webp"
 import image1 from "../images/image2.png"
+import image3 from "../images/image3.webp"
 
 export const heroSectionImages = {
   "Find": image,
-  "Reserve": image1,
-  "Book": "https://images.unsplash.com/photo-1719941032563-75921fe474fc?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  "Book": image1,
+  "Status": image3,
 }
 
 export const floatingCards = {
@@ -18,22 +19,22 @@ export const floatingCards = {
     title: "Find Homes",
     content: "Search and explore rental homes near your preferred location"
     },
-    "Reserve" : {
+    "Book" : {
     bgColor : "bg-purple-500/20",
     iconColor : "text-purple-400",
     textColor : "text-purple-200",
     contentColor : "text-purple-300",
     icon : "⚡️",
-    title: "Reserve",
-    content: "Check availability and reserve your ideal home in advance"
+    title: "Book Home",
+    content: "Check availability and book your ideal home in advance"
     },
-    "Book" : {
+    "Status" : {
     bgColor : "bg-emerald-500/20",
     iconColor : "text-emerald-400",
     textColor : "text-emerald-200",
     contentColor : "text-emerald-300",
     icon : "✅",
-    title: "Book Instantly",
+    title: "Check Status",
     content: "Secure your rental in seconds with a smooth booking process"
     }
 }
