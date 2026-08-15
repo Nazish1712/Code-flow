@@ -101,7 +101,7 @@ const ExploreHomesPage =() => {
         <p className="test-gray-400 mt-2">Try another search</p>
     </div>)
     :
-    (<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+    (<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 pb-2">
         {filteredHomes.map((card)=> (
         <Link key={card.info.id} to={"/individual-home/"+card.info.id}><HomeCard key={card.info.id} cardData={card.info}/></Link>))}
     </div> )
