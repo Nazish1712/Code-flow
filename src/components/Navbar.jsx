@@ -1,40 +1,31 @@
 import logo from "../images/logo.png"
 import { Menu, X } from "lucide-react"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 
 const Navbar = () => {
-  const [mobileMenuIsOpen, setmobileMenuIsOpen] = useState(false)
+  const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false)
 
   const links = [
-    {
-      title: "Home",
-      to: "/",
-    },
-    {
-      title: "Explore Homes",
-      to: "/explore-homes",
-    },
-    {
-      title: "My Bookings",
-      to: "/my-bookings",
-    },
+    { title: "Home", to: "/" },
+    { title: "Explore Homes", to: "/explore-homes" },
+    { title: "My Bookings", to: "/my-bookings" },
   ]
-  
-  //subscribing to the store using selector
+
+  // Subscribing to the store using selector
   const bookingItems = useSelector((store) => store.cart.items)
 
   return (
-    <> 
-      {/* 1. Main Navbar (z-40 so the menu can cover it) */}
-      <nav className="fixed top-0 w-full z-40 transition-all duration-300 bg-slate-950/20 backdrop-blur-sm font-jakarta">
+    <>
+      {/* Main Navbar */}
+      <nav className="font-jakarta fixed top-0 w-full z-40 transition-all duration-300 bg-slate-950/20 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
             <Link to="/" className="flex items-center space-x-1 group cursor-pointer">
               <div>
-                <img src={logo} alt="logo" className="w-6 h-6 sm:w-8 sm:h-8 " />
+                <img src={logo} alt="logo" className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
               <span className="text-lg sm:text-xl md:text-2xl font-medium">
                 <span className="text-white">Urban</span>
@@ -42,96 +33,131 @@ const Navbar = () => {
               </span>
             </Link>
 
-            {/** Desktop Nav Links */}
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+            {/* Desktop Nav Links */}
+            <div className="hidden md:flex items-center space-x-6 lg:space-x-8 h-full">
               {links.map((link, index) => (
-                <Link
+                <NavLink
                   to={link.to}
                   key={index}
-                  className="relative group text-gray-300 hover:text-white text-sm lg:text-base"
+                  end={link.to === "/"}
+                  className={({ isActive }) =>
+                    `relative group h-full flex items-center text-sm lg:text-base tracking-wide transition-colors duration-300 ${
+                      isActive ? "text-white font-medium" : "text-white/70 hover:text-neutral-200"
+                    }`
+                  }
                 >
-                  {link.title}{" "}
-                  {link.title === "My Bookings" && (
-                    <span className="absolute -top-2 -right-4 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-b from-blue-600 to-blue-400 p-1 text-xs font-semibold text-gray-300 group-hover:text-white">
-                      {bookingItems.length}
-                    </span>
+                  {({ isActive }) => (
+                    <>
+                      <span>{link.title}</span>
+
+                      {link.title === "My Bookings" && (
+                        <span className="ml-2 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-b from-blue-600 to-blue-400 p-1 text-[11px] font-semibold text-white">
+                          {bookingItems.length}
+                        </span>
+                      )}
+
+                      <span
+                        className={`absolute bottom-6 left-0 h-0.5 w-full transition-transform duration-300 ease-out origin-left ${
+                          isActive
+                            ? "scale-x-100 bg-blue-400"
+                            : "scale-x-0 group-hover:scale-x-100 bg-white/40"
+                        }`}
+                      />
+                    </>
                   )}
-                </Link>
+                </NavLink>
               ))}
             </div>
 
-            {/* 2. Hamburger button always stays as Menu in the main nav */}
-            <button
-              className="md:hidden p-2 text-gray-300 hover:text-white"
-              onClick={() => setmobileMenuIsOpen(true)}
-            >
-              <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
+            {!mobileMenuIsOpen && (
+              <button
+                type="button"
+                className="md:hidden p-2 text-gray-300 hover:text-white cursor-pointer"
+                onClick={() => setMobileMenuIsOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            )}
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer Navigation */}
       <AnimatePresence>
         {mobileMenuIsOpen && (
           <>
+            {/* Backdrop Blur Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              onClick={() => setmobileMenuIsOpen(false)}
+              onClick={() => setMobileMenuIsOpen(false)}
               className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm md:hidden"
             />
 
+            {/* Side Drawer Panel */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-              className="font-jakarta fixed top-0 right-0 h-full w-[75vw] max-w-sm bg-slate-900 border-l border-slate-800 z-50 md:hidden flex flex-col shadow-2xl"
+              transition={{ type: "tween", duration: 0.35, ease: "easeInOut" }}
+              className="font-jakarta fixed top-0 right-0 h-full w-[70vw] max-w-sm bg-slate-900/90 backdrop-blur-lg border-l border-white/10 z-50 md:hidden flex flex-col shadow-2xl"
             >
-             
-              <div className="flex justify-end p-4 sm:p-6">
+              <div className="flex justify-end p-5">
                 <button
-                  onClick={() => setmobileMenuIsOpen(false)}
-                  className="p-2 text-gray-400 hover:text-white bg-slate-800/50 rounded-full"
+                  type="button"
+                  onClick={() => setMobileMenuIsOpen(false)}
+                  className="p-2 text-gray-300 hover:text-white bg-slate-800/60 rounded-full cursor-pointer"
+                  aria-label="Close menu"
                 >
-                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="flex flex-col gap-6 px-6 pt-4">
+              {/* Mobile Nav Links List */}
+              <div className="flex flex-col gap-2 pt-4">
                 {links.map((link, index) => (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.2,
-                      delay: index * 0.1, 
-                    }}
+                  <NavLink
+                    to={link.to}
                     key={index}
+                    end={link.to === "/"}
+                    onClick={() => setMobileMenuIsOpen(false)}
+                    className={({ isActive }) =>
+                      `relative group flex items-center justify-between px-6 py-4 text-base tracking-wide transition-colors duration-300 ${
+                        isActive ? "text-white font-medium" : "text-white/70 hover:text-white"
+                      }`
+                    }
                   >
-                    <Link
-                      to={link.to}
-                      onClick={() => setmobileMenuIsOpen(false)}
-                      className="relative flex items-center text-gray-300 hover:text-white text-lg font-medium"
-                    >
-                      {link.title}
-                      {link.title === "My Bookings" && (
-                        <span className="ml-3 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-b from-blue-600 to-blue-400 text-xs font-semibold text-white">
-                          {bookingItems.length}
-                        </span>
-                      )}
-                    </Link>
-                  </motion.div>
+                    {({ isActive }) => (
+                      <>
+                        <div className="flex items-center gap-3">
+                          <span>{link.title}</span>
+                          {link.title === "My Bookings" && (
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-b from-blue-600 to-blue-400 text-xs font-semibold text-white">
+                              {bookingItems.length}
+                            </span>
+                          )}
+                        </div>
+
+                        <span
+                          className={`absolute right-0 top-0 h-full w-1 transition-all duration-300 ${
+                            isActive
+                              ? "bg-blue-400 opacity-100"
+                              : "bg-transparent group-hover:bg-white/30 opacity-0 group-hover:opacity-100"
+                          }`}
+                        />
+                      </>
+                    )}
+                  </NavLink>
                 ))}
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-    </> 
+    </>
   )
 }
 
