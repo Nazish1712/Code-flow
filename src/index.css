@@ -8,6 +8,15 @@
     --font-jakarta : "Plus Jakarta Sans" , sans-serif
 }
 
+*::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;    
+}
+
 @layer utilities {
     .animate-in{
         animation-fill-mode: both;
@@ -67,3 +76,4 @@
         transform: translateY(0);
     }
 }
+

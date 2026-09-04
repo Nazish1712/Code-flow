@@ -2,6 +2,7 @@ import {ChevronDown , Sparkles , ArrowRight, Play} from "lucide-react"
 import {useState} from "react"
 import { heroSectionImages, floatingCards} from "../data/HeroSectionData"
 import {Link} from "react-router-dom"
+import {motion, AnimatePresence} from "framer-motion"
 
 const Hero = () => {
     const [activeTab, setActiveTab] = useState("Find")
@@ -35,7 +36,7 @@ const Hero = () => {
                         <ArrowRight className="w-4 h-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300"/>
                 </Link> 
             
-                <button className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-white/10 flex items-center justify-center space-x-2">
+                <button className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-white/10 flex items-center justify-center space-x-2 cursor-pointer">
                         <div className="p-2 bg-white/10 rounded-full group-hover:bg-white/20 duration-300 transition-colors">
                         <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white"/>
                         </div>
@@ -67,21 +68,32 @@ const Hero = () => {
 
                         <div className="p-3 sm:p-4 relative h-full">
                         
-                        <div className="flex space-x-1 sm:space-x-2 mb-3 sm:mb-4 overflow-x-auto">
+                        <div className="flex space-x-1 sm:space-x-2 mb-3 sm:mb-4 overflow-x-auto ">
                             <button
                             onClick={() => setActiveTab("Find")}
-                            className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border ${ activeTab === "Find" ? "bg-blue-500/30 text-white border-blue-400/20" : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10" } transition-all duration-200 whitespace-nowrap`}>Find</button>
+                            className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border cursor-pointer ${ activeTab === "Find" ? "bg-blue-500/30 text-white border-blue-400/20" : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10" } transition-all duration-200 whitespace-nowrap`}>Find</button>
                             <button 
                             onClick={() => setActiveTab("Book")}
-                            className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border ${ activeTab === "Book" ? "bg-blue-500/30 text-white border-blue-400/20" : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10" } transition-all duration-200 whitespace-nowrap`}>Book</button>
+                            className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border cursor-pointer ${ activeTab === "Book" ? "bg-blue-500/30 text-white border-blue-400/20" : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10" } transition-all duration-200 whitespace-nowrap`}>Book</button>
                             <button  
                             onClick={() => setActiveTab("Status")}
-                            className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border ${ activeTab === "Status" ? "bg-blue-500/30 text-white border-blue-400/20" : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10" } transition-all duration-200 whitespace-nowrap`}>Status</button>
+                            className={`px-3 py-2 backdrop-blur-sm text-xs sm:text-sm rounded-t-lg border cursor-pointer ${ activeTab === "Status" ? "bg-blue-500/30 text-white border-blue-400/20" : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10" } transition-all duration-200 whitespace-nowrap`}>Status</button>
                         </div>
 
                       
-                        <div className="relative overflow-hidden flex-grow ">
-                            <img src={heroSectionImages[activeTab]} loading="lazy" alt="activeTab" className="m-0 border border-gray-800 rounded-md h-full object-cover"></img>
+                        <div className="relative overflow-hidden  w-full h-[320px]rounded-md border border-gray-800">
+                        <AnimatePresence mode="wait">
+                         <motion.img
+                           key={activeTab}
+                           src={heroSectionImages[activeTab]}
+                           alt={activeTab}
+                           initial={{ opacity: 0, scale: 0.96, y: 8 }}
+                           animate={{ opacity: 1, scale: 1, y: 0 }}
+                           exit={{ opacity: 0, scale: 0.98, y: -8 }}
+                           transition={{ duration: 0.28, ease: "easeOut" }}
+                           className="w-full h-full object-cover object-top block"
+                           />
+                        </AnimatePresence>
                         </div>
                     </div>
                     </div>
